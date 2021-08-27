@@ -5,7 +5,7 @@ const cors = require('cors');
 
 // const cookieParser = require('cookie-parser');
 
-const config = require('./config/key');
+// const config = require('./config/key');
 
 // const mongoose = require("mongoose");
 // mongoose
@@ -13,16 +13,16 @@ const config = require('./config/key');
 //   .then(() => console.log("DB connected"))
 //   .catch(err => console.error(err));
 
-const mongoose = require('mongoose');
-const connect = mongoose
-  .connect(config.mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  })
-  .then(() => console.log('MongoDB Connected...'))
-  .catch((err) => console.log(err));
+// const mongoose = require('mongoose');
+// const connect = mongoose
+//   .connect(config.mongoURI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true,
+//     useFindAndModify: false,
+//   })
+//   .then(() => console.log('MongoDB Connected...'))
+//   .catch((err) => console.log(err));
 
 app.use(cors());
 
@@ -31,8 +31,8 @@ app.use(cors());
 
 // app.use(cookieParser());
 
-app.use('/api/users', require('./routes/users'));
-app.use('/api/favorite', require('./routes/favorite'));
+// app.use('/api/users', require('./routes/users'));
+app.use('/api/image', require('./routes/image'));
 //use this to show the image you have in node js server to client (react js)
 //https://stackoverflow.com/questions/48914987/send-image-path-from-node-js-express-server-to-react-client
 app.use('/uploads', express.static('uploads'));
@@ -49,7 +49,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`Server Listening on ${port}`);
